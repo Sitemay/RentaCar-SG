@@ -1,0 +1,30 @@
+﻿@model RentAcar_SG.Models.MyAdmin
+
+
+@{
+    ViewBag.Title = "MyAdmin";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <body class="text-center">
+        <form class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal">Giriş Yapınız</h1>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <p>Kullanıcı Adı</p>
+            @Html.TextBoxFor(s => s.name, new { title = "Kullanıcı adınızı giriniz.", @Value = @ViewBag.name })
+            <label for="inputPassword" class="sr-only">Password</label>
+            <p>Şifre</p>
+            @Html.PasswordFor(f => f.passwd, new { title = "Kullanıcı şifrenizi giriniz.", @Value = @ViewBag.passwd })
+            <div class="mb-3">
+                @Html.ValidationMessageFor(m => m.name)
+            </div>
+            <button class="btn btn-lg btn-primary" type="submit">Giriş</button>
+
+        </form>
+    </body>
+}
+
+
+

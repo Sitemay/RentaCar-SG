@@ -1,0 +1,42 @@
+﻿@model IEnumerable<RentAcar_SG.Models.VehicleModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>SG Araç Kiralama</h2>
+
+@Html.Partial("VehicleListesi", Model)
+
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("SG Araç Kiralama", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Admin Girişi", "MyAdmin", "MyAdmin", new { area = "" }, new { @class = "navbar-brand navbar-xs" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav"></ul>
+        </div>
+    </div>
+
+</nav>
+
+@section SagKolon
+{
+    @Html.Partial("Search")
+    @{Html.RenderAction("KategoriListesi", "Category");}
+
+
+}
+
+
+
+
+
+

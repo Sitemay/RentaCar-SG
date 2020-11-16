@@ -1,0 +1,19 @@
+﻿@model IEnumerable<RentAcar_SG.Models.VehicleModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>SG Araç Kiralama</h2>
+
+@Html.Partial("VehicleListesi", Model)
+
+
+@section SagKolon
+{
+    @Html.Partial("Search")
+
+    @{Html.RenderAction("KategoriListesi", "Category");}
+
+
+}

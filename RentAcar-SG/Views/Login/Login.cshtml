@@ -1,0 +1,35 @@
+﻿@model RentAcar_SG.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h1>SG Araç Kiralamaya Hoşgeldiniz</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <body class="text-center">
+        <form class="form-signin">
+            <p><strong>Kullanıcı Adı</strong></p>
+            @Html.TextBoxFor(s => s.username, new { title = "Kullanıcı adınızı giriniz.", @Value = @ViewBag.username })
+            <label for="inputPassword" class="sr-only">Password</label>
+            <p><strong>Şifre</strong></p>
+            @Html.PasswordFor(f => f.password, new { title = "Kullanıcı şifrenizi giriniz.", @Value = @ViewBag.password })
+            <div class="mb-3">
+                @Html.ValidationMessageFor(m => m.username)
+            </div>
+            <button class="btn btn-primary btn-xs" type="submit">Giriş</button>
+
+
+            @Html.ActionLink("Kayıt Ol", "Kayit", null, new { @class = "btn btn-warning btn-xs" })
+            @Html.ActionLink("Admin Girişi", "MyAdmin", "MyAdmin", new { area = "" }, new { @class = "btn btn-danger btn-xs" })
+
+
+
+
+        </form>
+    </body>
+}
+
+

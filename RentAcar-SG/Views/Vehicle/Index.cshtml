@@ -1,0 +1,95 @@
+﻿ @model IEnumerable<RentAcar_SG.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Index";
+}
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("SG Araç Kiralama", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Admin Girişi", "MyAdmin", "MyAdmin", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav"></ul>
+        </div>
+    </div>
+
+</nav>
+
+<h2>SG Araç Kiralama</h2>
+<hr />
+
+<p>
+    @Html.ActionLink("Yeni Araç Ekle", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Yeni Kategori Ekle", "Create", "Category", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Kategorilere Bak", "Index", "Category", null, new { @class = "btn btn-primary" })
+</p>
+<hr />
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.KategoriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AracAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uyggunluk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anasayfa)
+        </th>
+        <th style="width:auto"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.KategoriAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AracAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelAdi)
+            </td>
+            <td>
+                @if (item.Uyggunluk)
+                {
+                    <label class="label label-success">Uygun</label>
+                }
+                else
+                {
+                    <label class="label label-danger">Mevcut değil</label>
+                }
+            </td>
+            <td>
+                @if (item.Anasayfa)
+                {
+                    <label class="label label-success">Anasayfa</label>
+                }
+                else
+                {
+                    <label class="label label-danger">Anasayfa Değil</label>
+                }
+            </td>
+            <td>
+
+                @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })
+            </td>
+        </tr>
+    }
+
+</table>

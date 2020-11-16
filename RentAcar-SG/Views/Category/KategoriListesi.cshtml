@@ -1,0 +1,22 @@
+﻿@model IEnumerable<RentAcar_SG.Models.Category>
+
+@*
+    <div class="well">
+        <h4>Araç Kategorileri</h4>
+        <hr />
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="/Vehicle/List/@item.Id">@item.KategoriAdi</a>
+                        </li>
+                    </ul>
+                </div>
+            }
+
+        </div>
+        <!-- /.row -->
+    </div>*@
